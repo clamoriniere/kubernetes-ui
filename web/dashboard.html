@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html ng-app>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>kubernetes - Dashboard</title>
+    
+    <script async type="application/dart" src="dashboard.dart"></script>
+    <script async src="packages/browser/dart.js"></script>
+    
+    <script src="packages/shadow_dom/shadow_dom.min.js"></script>
+    <link rel="stylesheet" href="packages/bootstrap_for_pub/css/bootstrap.min.css">
+    <link rel="stylesheet" href="packages/bootstrap_for_pub/css/bootstrap-theme.min.css">
+   <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <style media="screen" type="text/css">
+      .ng-hide, 
+      .ng-show {
+        display: none !important;
+      }
+      
+      [ng\:cloak], [ng-cloak], .ng-cloak {
+        display: none !important;
+      }
+
+    </style>
+    <style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style>
+    <style type="text/css">.gm-style{font-family:Roboto,Arial,sans-serif;font-size:11px;font-weight:400;text-decoration:none}</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="/bootstrap/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <style id="clearly_highlighting_css" type="text/css">/* selection */ html.clearly_highlighting_enabled ::-moz-selection { background: rgba(246, 238, 150, 0.99); } html.clearly_highlighting_enabled ::selection { background: rgba(246, 238, 150, 0.99); } /* cursor */ html.clearly_highlighting_enabled {    /* cursor and hot-spot position -- requires a default cursor, after the URL one */    cursor: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--cursor.png") 14 16, text; } /* highlight tag */ em.clearly_highlight_element {    font-style: inherit !important; font-weight: inherit !important;    background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--yellow.png");    background-repeat: repeat-x; background-position: top left; background-size: 100% 100%; } /* the delete-buttons are positioned relative to this */ em.clearly_highlight_element.clearly_highlight_first { position: relative; } /* delete buttons */ em.clearly_highlight_element a.clearly_highlight_delete_element {    display: none; cursor: pointer;    padding: 0; margin: 0; line-height: 0;    position: absolute; width: 34px; height: 34px; left: -17px; top: -17px;    background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--delete-sprite.png"); background-repeat: no-repeat; background-position: 0px 0px; } em.clearly_highlight_element a.clearly_highlight_delete_element:hover { background-position: -34px 0px; } /* retina */ @media (min--moz-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {    em.clearly_highlight_element { background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--yellow@2x.png"); }    em.clearly_highlight_element a.clearly_highlight_delete_element { background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--delete-sprite@2x.png"); background-size: 68px 34px; } } </style>
+    <style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }</style>
+    <link rel="stylesheet" href="dashboard.css">
+  </head>
+  <body indexctrl>
+     <!-- Header -->
+     <div class="navbar navbar-custom navbar-fixed-top">
+     <div class="navbar-header"><a class="navbar-brand" href="#">kubernetes-ui</a>
+          <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#minion">Minions</a></li>
+            <li><a href="#pods">Pods</a></li>
+            <li><a href="#dockers">Dockers</a></li>
+            <li>&nbsp;</li>
+          </ul>
+         <form class="navbar-form">
+            <div class="form-group" style="display:inline;">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="{{mainCtrl.placeholder}}" ng-model="mainCtrl.ipmaster">
+                <span class="input-group-addon" ng-click="mainCtrl.connectToMaster()"><span class="glyphicon glyphicon-tasks" ></span></span>
+              </div>
+            </div>
+          </form>      
+        </div>
+    </div>
+    
+    <!-- content page -->
+    <div class="container-fluid" id="main">
+      <div class="row col-xs-12">
+        <div class="row">
+          <div class="col-xs-6" id="left">
+            <div class="panel panel-default">
+             <div class="panel-heading">
+                <h3 class="panel-title">Master ip: <span ng-cloak>{{mainCtrl.ipmaster}}</span></h3>
+             </div>
+             <div class="panel-body">
+                  <!-- test -->
+             </div>
+            </div>
+          </div>
+           <div class="col-xs-6" id="right">
+            <div class="panel panel-default">
+               <div class="panel-heading">
+                  <h3 class="panel-title">Minions list</h3>
+               </div>
+               <div class="panel-body" ng-if="mainCtrl.minions.length > 0">
+                  <ul class="list-group" ng-cloak>
+                    <li class="list-group-item" ng-repeat="minion in mainCtrl.minions"><span class="badge">14</span><a href="http://{{minion.ip}}:4194" target="_blank">{{minion.ip}}</a></li>
+                  </ul>
+               </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="row">
+            <minion ng-repeat="minion in mainCtrl.minions" item="minion"></minion>
+        </div>
+      </div>
+      
+    
+      <!-- Footer -->
+      <div class="row">
+        <div class="col-xs-12"> 
+          <div class="center-block btn btn-primary">Last Miles Solver | credit: R&D-NBU-RAD-RTA</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

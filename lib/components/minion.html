@@ -1,0 +1,14 @@
+<div class="col-xs-4" id="left">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Minion: {{ctrl.minion.ip}} </h3>
+    </div>   
+    <ul class="list-group" ng-cloak>
+        <li class="list-group-item">nb cpu: {{ctrl.minion.cpu}}</li>
+        <li class="list-group-item">nb memory: {{ctrl.minion.memory}}</li>
+        <li class="list-group-item">max memory: {{ctrl.minion.maxMemoryUsage}}</li>
+        <li class="list-group-item"><span class="badge">{{ctrl.minion.cpuPercent}}%</span> cpu usage: {{ctrl.minion.cpuUsage}}</li>
+        <li class="list-group-item"><span class="badge">{{ctrl.minion.getMemoryPercent()}}%</span> memory usage: {{ctrl.minion.memoryUsage}}</li>
+    </ul>      
+  </div>
+</div>
