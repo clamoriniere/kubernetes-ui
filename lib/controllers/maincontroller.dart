@@ -13,19 +13,26 @@ class MainController {
   Set<Service> services = new Set<Service>();
   Set<ReplicationController> replicationcontrollers = new Set<ReplicationController>();
 
+  bool _listenCluster = false;
 
   MainController(this._http, this._scope) {
 
   }
+  
+  bool get isStarted => _listenCluster;
 
   void connectToMaster() {
+    _listenCluster = true;
     getMinionList();
-
 
     _watchMinions();
     _watchPods();
     _watchServices();
     _watchReplicationControllers();
+  }
+  
+  void stopListen() {
+    _listenCluster = false;
   }
 
   void getMinionList() {
@@ -206,7 +213,9 @@ class MainController {
       getMinionCadvisorInfo(item);
     }
 
-    sleep2().then((_) => _watchMinions());
+    if (_listenCluster) {
+      sleep2().then((_) => _watchMinions());
+    }
   }
 
   void _watchPods() {
@@ -216,7 +225,9 @@ class MainController {
       // TODO call api for Pod info
     }
 
-    sleep2().then((_) => _watchPods());
+    if (_listenCluster) {
+      sleep2().then((_) => _watchPods());
+    }
   }
 
   void _watchServices() {
@@ -226,7 +237,9 @@ class MainController {
       // TODO call api for Service info
     }
 
-    sleep2().then((_) => _watchServices());
+    if (_listenCluster) {
+      sleep2().then((_) => _watchServices());
+    }
   }
 
   void _watchReplicationControllers() {
@@ -236,7 +249,9 @@ class MainController {
       // TODO call api for Service info
     }
 
-    sleep2().then((_) => _watchReplicationControllers());
+    if (_listenCluster) {
+      sleep2().then((_) => _watchReplicationControllers());
+    }
   }
 
   Future sleep2() {

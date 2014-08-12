@@ -40,7 +40,6 @@ class Minion {
     if (iResponse.data.containsKey("memory_capacity")) {
       _memory = iResponse.data["memory_capacity"];
     }
-
   }
 
   void setContainersInfo(HttpResponse iResponse) {
@@ -60,11 +59,11 @@ class Minion {
       int rawUsage = lastStat["cpu"]["usage"]["total"] - prevStat["cpu"]["usage"]["total"];
 
       // Convert to millicores and take the percentage
-      _cpuPercent = (((rawUsage / 1000000) / (_cpu * 1000)) * 100).round();
-      if (_cpuPercent == null) {
-        _cpuPercent = 0;
+      double tmpPercent = (((rawUsage / 1000000) / (_cpu * 1000)) * 100).roundToDouble();
+      if (tmpPercent == null) {
+        tmpPercent = 0.0;
       }
-      _cpuPercent = _cpuPercent.round();
+      _cpuPercent = tmpPercent.round();
       if (_cpuPercent > 100) {
         _cpuPercent = 100;
       }
