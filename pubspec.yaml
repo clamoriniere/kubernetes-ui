@@ -1,9 +1,10 @@
 name: dashboard
 description: A sample web application
 dependencies:
-  browser: any
   angular: 0.11.0
-  bootstrap_for_pub: ">=3.2.0 <4.0.0"
+  bootstrap_for_pub: '>=3.2.0 <4.0.0'
+  browser: any
   shadow_dom: any
+  start: any
 transformers:
 - angular

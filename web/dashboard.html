@@ -77,21 +77,55 @@
              <div class="panel-heading">
                 <h3 class="panel-title">Master ip: <span ng-cloak>{{mainCtrl.ipmaster}}</span></h3>
              </div>
-             <div class="panel-body">
-                  <!-- test -->
-             </div>
+              <ul class="list-group" ng-cloak>
+               <li class="list-group-item"><span class="badge">{{mainCtrl.minions.length}}</span> Nb Minions</li>
+               <li class="list-group-item"><span class="badge">{{mainCtrl.pods.length}}</span> Nb Pods</li>
+               <li class="list-group-item"><span class="badge">{{mainCtrl.services.length}}</span> Nb Services</li>
+               <li class="list-group-item"><span class="badge">{{mainCtrl.replicationcontrollers.length}}</span> Nb Replicationcontroller</li>
+              </ul>
             </div>
-          </div>
-           <div class="col-xs-6" id="right">
-            <div class="panel panel-default">
+             <div class="panel panel-default">
                <div class="panel-heading">
                   <h3 class="panel-title">Minions list</h3>
                </div>
-               <div class="panel-body" ng-if="mainCtrl.minions.length > 0">
+    
                   <ul class="list-group" ng-cloak>
-                    <li class="list-group-item" ng-repeat="minion in mainCtrl.minions"><span class="badge">14</span><a href="http://{{minion.ip}}:4194" target="_blank">{{minion.ip}}</a></li>
+                    <li class="list-group-item" ng-repeat="minion in mainCtrl.minions"><a href="http://{{minion.ip}}:4194" target="_blank">{{minion.ip}}</a></li>
                   </ul>
+          
+            </div>
+            
+          </div>
+           <div class="col-xs-6" id="right">
+           <div class="panel panel-default">
+               <div class="panel-heading">
+                  <h3 class="panel-title">Pod list</h3>
                </div>
+               
+                  <ul class="list-group" ng-cloak>
+                    <li class="list-group-item" ng-repeat="pod in mainCtrl.pods"><span class="badge">{{pod.status}}</span>{{pod.id}} ({{pod.labelName}})</li>
+                  </ul>
+               
+            </div>
+            <div class="panel panel-default">
+               <div class="panel-heading">
+                  <h3 class="panel-title">Service list</h3>
+               </div>
+               
+                  <ul class="list-group" ng-cloak>
+                    <li class="list-group-item" ng-repeat="service in mainCtrl.services"><span class="badge">port: {{service.port}}</span>{{service.id}} ({{service.selectorName}})</li>
+                  </ul>
+             
+            </div>
+            <div class="panel panel-default">
+               <div class="panel-heading">
+                  <h3 class="panel-title">ReplicationControllers list</h3>
+               </div>
+               
+                  <ul class="list-group" ng-cloak>
+                    <li class="list-group-item" ng-repeat="rep in mainCtrl.replicationcontrollers"><span class="badge">{{rep.replicas}}</span>{{rep.id}}</li>
+                  </ul>
+             
             </div>
           </div>
           
