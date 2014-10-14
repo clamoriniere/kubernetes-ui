@@ -13,7 +13,7 @@ Dashboard features
 How to start the dashboard
 --------------------------
 
-you to have the dart sdk install on your machine. (https://www.dartlang.org/)
-also in chrome add the extension 'CORS': chrome://extensions/?id=nlfbmbojpeacfghkpbjhddihlkkiljbi
-then go to the project folder and run: pub serve
+- you to have the dart sdk install on your machine. (https://www.dartlang.org/)
+- also in chrome add the extension 'CORS': chrome://extensions/?id=nlfbmbojpeacfghkpbjhddihlkkiljbi
+- then go to the project folder and run: pub serve
 
