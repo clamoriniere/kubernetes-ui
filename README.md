@@ -23,7 +23,7 @@ How to start the dashboard
 
 ### In a Docker container ###
 
-currently broken... the current code is not compliant with the last dart2js (SDK 1.6)
+> **currently broken...** the current code is not compliant with the last dart2js (SDK 1.6)
 
 ``` docker build --tag='kubernetesui' . ```
 
