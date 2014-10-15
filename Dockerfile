@@ -16,7 +16,7 @@ RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 # Install the dart server app.
 
 ADD pubspec.yaml  /container/pubspec.yaml
-ADD pubspec.lock  /container/pubspec.lock
+#ADD pubspec.lock  /container/pubspec.lock
 ADD lib           /container/lib
 ADD bin           /container/bin
 ADD web           /container/web
