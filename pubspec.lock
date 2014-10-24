@@ -4,11 +4,11 @@ packages:
   analyzer:
     description: analyzer
     source: hosted
-    version: "0.13.6"
+    version: "0.15.7"
   angular:
     description: angular
     source: hosted
-    version: "0.11.0"
+    version: "1.0.0"
   args:
     description: args
     source: hosted
@@ -28,7 +28,7 @@ packages:
   code_transformers:
     description: code_transformers
     source: hosted
-    version: "0.1.4+1"
+    version: "0.1.6"
   collection:
     description: collection
     source: hosted
@@ -36,7 +36,7 @@ packages:
   di:
     description: di
     source: hosted
-    version: "0.0.40"
+    version: "3.3.2"
   html5lib:
     description: html5lib
     source: hosted
@@ -57,6 +57,10 @@ packages:
     description: mime
     source: hosted
     version: "0.9.0+3"
+  observe:
+    description: observe
+    source: hosted
+    version: "0.10.1+2"
   path:
     description: path
     source: hosted
@@ -68,11 +72,15 @@ packages:
   route_hierarchical:
     description: route_hierarchical
     source: hosted
-    version: "0.4.21"
+    version: "0.5.0"
   shadow_dom:
     description: shadow_dom
     source: hosted
     version: "0.10.0"
+  smoke:
+    description: smoke
+    source: hosted
+    version: "0.1.0+1"
   source_maps:
     description: source_maps
     source: hosted

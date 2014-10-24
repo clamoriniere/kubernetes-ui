@@ -1,9 +1,8 @@
 part of dashboard_app;
 
-@Controller(selector: '[indexctrl]', publishAs: 'mainCtrl')
+@Injectable()
 class MainController {
-  Http _http;
-  Scope _scope;
+  //final KubernetesService kubernetesservice;
 
   String placeholder = "127.0.0.1";
   String ipmaster = "";
@@ -13,16 +12,15 @@ class MainController {
   Set<Service> services = new Set<Service>();
   Set<ReplicationController> replicationcontrollers = new Set<ReplicationController>();
 
-  bool _listenCluster = false;
+  bool listenCluster = false;
+  bool get isStarted => listenCluster;
 
-  MainController(this._http, this._scope) {
+  MainController() {
 
   }
-  
-  bool get isStarted => _listenCluster;
 
   void connectToMaster() {
-    _listenCluster = true;
+    listenCluster = true;
     getMinionList();
 
     _watchMinions();
@@ -32,17 +30,19 @@ class MainController {
   }
   
   void stopListen() {
-    _listenCluster = false;
+    listenCluster = false;
   }
 
   void getMinionList() {
     String url = "http://" + ipmaster + ":8080/api/v1beta1/minions";
 
-
+/*
     _http.get(url).then((HttpResponse response) => _setMinions(response)).catchError((e) {
       Logger.root.severe('There was a ${e.runtimeType} error');
       Logger.root.severe('Error Details ${e.toString()}');
     });
+    
+     */
   }
 
   void _setMinions(HttpResponse iResponse) {
@@ -74,34 +74,39 @@ class MainController {
   void getPodList() {
     String url = "http://" + ipmaster + ":8080/api/v1beta1/pods";
 
-
+/*
     _http.get(url).then((HttpResponse response) => _setPods(response)).catchError((e) {
       Logger.root.severe('There was a ${e.runtimeType} error');
       Logger.root.severe('Error Details ${e.toString()}');
 
     });
+    
+     */
   }
 
   void getServiceList() {
     String url = "http://" + ipmaster + ":8080/api/v1beta1/services";
 
-
+/*
     _http.get(url).then((HttpResponse response) => _setServices(response)).catchError((e) {
       Logger.root.severe('There was a ${e.runtimeType} error');
       Logger.root.severe('Error Details ${e.toString()}');
 
     });
+    
+     */
   }
 
   void getReplicationControllersList() {
     String url = "http://" + ipmaster + ":8080/api/v1beta1/replicationControllers";
 
-
+/*
     _http.get(url).then((HttpResponse response) => _setReplicationControllers(response)).catchError((e) {
       Logger.root.severe('There was a ${e.runtimeType} error');
       Logger.root.severe('Error Details ${e.toString()}');
 
     });
+     */
   }
 
   void _setPods(HttpResponse iResponse) {
@@ -213,7 +218,7 @@ class MainController {
       getMinionCadvisorInfo(item);
     }
 
-    if (_listenCluster) {
+    if (listenCluster) {
       sleep2().then((_) => _watchMinions());
     }
   }
@@ -225,7 +230,7 @@ class MainController {
       // TODO call api for Pod info
     }
 
-    if (_listenCluster) {
+    if (listenCluster) {
       sleep2().then((_) => _watchPods());
     }
   }
@@ -237,7 +242,7 @@ class MainController {
       // TODO call api for Service info
     }
 
-    if (_listenCluster) {
+    if (listenCluster) {
       sleep2().then((_) => _watchServices());
     }
   }
@@ -249,7 +254,7 @@ class MainController {
       // TODO call api for Service info
     }
 
-    if (_listenCluster) {
+    if (listenCluster) {
       sleep2().then((_) => _watchReplicationControllers());
     }
   }
@@ -261,7 +266,7 @@ class MainController {
   void getMinionCadvisorInfo(Minion iMinion) {
     String urlMachine = "http://" + iMinion.ip + ":4194/api/v1.0/machine";
 
-
+/*
     _http.get(urlMachine).then((HttpResponse response) => iMinion.setMachineInfo(response)).catchError((e) {
       Logger.root.severe('There was a ${e.runtimeType} error');
       Logger.root.severe('Error Details ${e.toString()}');
@@ -273,7 +278,7 @@ class MainController {
       Logger.root.severe('There was a ${e.runtimeType} error');
       Logger.root.severe('Error Details ${e.toString()}');
     });
-
+*/
 
   }
 

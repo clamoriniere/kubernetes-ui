@@ -17,22 +17,21 @@ part 'bom/service.dart';
 part 'bom/replicationcontroller.dart';
 
 part 'components/minion_component.dart';
-
+part 'components/menu-component.dart';
 part 'controllers/maincontroller.dart';
+
+part 'services/kubernetesService.dart';
 
 class MainModule extends Module {
   MainModule() {
 
-    bind(MainController);
+    bind(KubernetesService);
+   // bind(MainController);
 
     bind(MinionComponent);
+    bind(MenuComponent);
 
 
     this.install(new AnimationModule());
   }
-}
-
-startApp() {
-  Injector inj = applicationFactory().addModule(new MainModule()).run();
-  // GlobalHttpInterceptors.setUp(inj);
 }
